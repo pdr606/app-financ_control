@@ -20,23 +20,27 @@ function App() {
   const [descricao, setDescricao] = React.useState('')
   const [valor, setValor] = React.useState('')
   const [error, setError] = React.useState(null)
-  const [montar, setMontar] = React.useState(false)
-  const [historico, setHistorico] =React.useState([])
-
+  const [ativar, seAtivar] = React.useState(true)
+  const [historico, setHistorico] = React.useState([])
+  const [saldo, setSaldo] = React.useState('')
+  const [saida, setSaida] = React.useState('')
+  let totalEntradas; 
 
   React.useEffect(() =>{
     if(localStorage.length > 0){
       const storedItem = localStorage.getItem('historico');
       parsedItem = JSON.parse(storedItem)
-      setMontar(parsedItem)
       setHistorico([...parsedItem])
-
-
     }
-
   },[])
 
-  
+
+ 
+  if(ativar){
+    totalEntradas = historico.filter(item => Number(item.valor)).reduce((a, item) => a + parseFloat(item.valor), 0 )
+  }
+
+
   function handleSubmit(event){
     event.preventDefault()
     const novoObjeto = {
@@ -51,7 +55,6 @@ function App() {
     
     const storedItem = localStorage.getItem('historico');
     parsedItem = JSON.parse(storedItem)
-    setMontar(parsedItem)
 
     
   }
@@ -70,6 +73,11 @@ function App() {
     
   }
 
+  function excluirEvento(event){
+    event.preventDefault()
+    console.log(event.target)
+  }
+
 
 
   return (
@@ -78,13 +86,13 @@ function App() {
       <div>
 
       <div>
-        <p>Entradas</p>
+        <p>Entradas {totalEntradas} </p>
       </div>
       <div>
         <p>Saídas</p>
       </div>
       <div>
-        <p>Saldo</p>
+        <p>Saldo {saldo}</p>
       </div>
       </div>
       <form onSubmit={handleSubmit}>
@@ -97,11 +105,12 @@ function App() {
     <button>Adicionar</button>
       </form>
       <div>
-        {montar && montar.map (r =>(
+        {historico.map (r =>(
           <div key={r.valor}>
             {r.descricao}
             {r.valor}
             {r.tipo}
+            <button descricao={r.descricao} onClick={excluirEvento}>Excluir</button>
           </div>
           
         ))}
