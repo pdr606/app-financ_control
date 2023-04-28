@@ -20,7 +20,6 @@ function App() {
   const [descricao, setDescricao] = React.useState('')
   const [valor, setValor] = React.useState('')
   const [error, setError] = React.useState(null)
-  const [ativar, seAtivar] = React.useState(true)
   const [historico, setHistorico] = React.useState([])
   const [saldo, setSaldo] = React.useState('')
   const [saida, setSaida] = React.useState('')
@@ -35,10 +34,13 @@ function App() {
   },[])
 
 
- 
-  if(ativar){
-    totalEntradas = historico.filter(item => Number(item.valor)).reduce((a, item) => a + parseFloat(item.valor), 0 )
+ React.useEffect(() =>{
+  if(historico){
+    console.log('banan')
+    setSaldo(historico.filter(item => Number(item.valor)).reduce((a, item) => a + parseFloat(item.valor), 0 ))
+    console.log(saldo)
   }
+ },[historico, saldo])
 
 
   function handleSubmit(event){
