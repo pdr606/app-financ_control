@@ -51,6 +51,8 @@ function App() {
       tipo : valueRadio
     }
 
+    console.log(novoObjeto.descricao)
+
 
     setHistorico([...historico, novoObjeto])
     localStorage.setItem('historico', JSON.stringify([...historico, novoObjeto]))
