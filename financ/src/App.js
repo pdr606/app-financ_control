@@ -1,6 +1,7 @@
 import React from 'react';
 import Radio from './Radio';
 import Input from './Input';
+import './App.css';
 
 function App() {
 
@@ -38,8 +39,6 @@ function App() {
       tipo : valueRadio,
     }
 
-
-
     setHistorico([...historico, novoObjeto])
     localStorage.setItem('historico', JSON.stringify([...historico, novoObjeto]))
     
@@ -48,7 +47,6 @@ function App() {
 
     
   }
-
 
   function excluirEvento(objeto){
     const novoHistorico = (historico.filter((item) => item !== objeto))
@@ -61,28 +59,48 @@ function App() {
 
   return (
     <section>
-      <h1>Controle Financeiro</h1>
-      <div>
+      <div className='divH1'>
+        <h1>Controle Financeiro</h1>
+      </div>
 
-      <div>
-        <p>Entradas {entrada} </p>
+      <div className='divContainer'>
+        <div className='Containerdiv'>
+          <div className='Containertitulo'>
+            <p>Entradas + </p>
+          </div>
+          <div className='Containervalor'>
+            <p>+ R$ {entrada}</p>
+          </div>
+        </div>
+
+        <div className='Containerdiv'>
+          <div className='Containertitulo'>
+            <p>Saídas - </p>
+          </div>
+          <div className='Containervalor'>
+            <p>- R$ {saida}</p>
+          </div>
+        </div>
+
+        <div className='Containerdiv'>
+          <div className='Containertitulo'>
+            <p>Saldo $</p>
+          </div>
+          <div className='Containervalor'>
+            <p>R$ {saldo}</p>
+          </div>
+        </div>
+
       </div>
-      <div>
-        <p>Saídas {saida}</p>
-      </div>
-      <div>
-        <p>Saldo {saldo}</p>
-      </div>
-      </div>
+
       <form onSubmit={handleSubmit}>
-        <Input type='text' id='descricao' value={descricao} setValue={setDescricao}   label="Descrição" required/>
-        <Input type='number' id='valor' value={valor} setValue={setValor}  label="Valor" required/>
-
-
-        <Radio options={['Entrada', 'Saída']} value={valueRadio} setValue={setValueRadio} />
+        <Input  type='text' id='descricao' value={descricao} setValue={setDescricao}   label="Descrição" required/>
+        <Input  type='number' id='valor' value={valor} setValue={setValor}  label="Valor" required/>
+        <Radio  options={['Entrada', 'Saída']} value={valueRadio} setValue={setValueRadio} />
         
     <button>Adicionar</button>
       </form>
+
       <div>
         {historico.map (objeto =>(
           <div key={objeto.descricao + Math.floor(Math.random() * 100000)}>

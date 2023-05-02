@@ -1,0 +1,98 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,100;1,400;1,500&display=swap');
+
+body{
+    background-color: #eee;
+}
+
+.divH1{
+    background-color: rgba(0, 128, 0, 0.5);
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    margin: auto;
+    color: white;
+    font-weight: 300;
+}
+
+.divContainer{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    position: relative;
+    top: -20px;
+    z-index: 999;
+}
+
+.Containerdiv{
+    font-family: 'Roboto', sans-serif;
+    display: flex column;
+    height: 130px;
+    background-color: white;
+}
+
+.Containertitulo{
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Containervalor{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    height: 80%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+form{
+    background-color: white;
+    width: 70%;
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-weight: 400;
+    height: 40px;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+    align-items: center;
+}
+
+form button{
+    background-color: #999;
+    color: black;
+    border: none;
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+}
+
+form button:hover{
+    background-color: black;
+    color: #999;
+    transition: 0.8s;
+    cursor: pointer;
+
+}
+
