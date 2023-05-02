@@ -89,8 +89,8 @@ form button{
 }
 
 form button:hover{
-    background-color: black;
-    color: #999;
+    background-color: #747272;
+    color: black;
     transition: 0.8s;
     cursor: pointer;
 
