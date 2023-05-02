@@ -80,19 +80,62 @@ form{
 }
 
 form button{
-    background-color: #999;
-    color: black;
+    background-color: white;
     border: none;
-    padding: 5px;
-    width: 100px;
-    border-radius: 5px;
-}
-
-form button:hover{
-    background-color: #999;
-    color: black;
-    transition: 0.8s;
     cursor: pointer;
+}
+
+.containerResultado{
+    background-color: white;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex column;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 10px;
+}
+
+.resultado{
+    display: flex;
+    padding: 3px;
+    
+}
+
+.resultado1{
+    padding-bottom: 5px;
+    margin: auto;
+    padding-top: 5px;
+    font-size: 17px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.185);
+}
+
+.primeiro{
+    width: 30%;
+    height: 100%;
+    padding-left: 20px;
+}
+
+.resultado2{
+    padding-top: 10px;
+}
+
+.segundo{
+    width: 30%;
+    height: 100%;
+    padding-left: 20px;
 
 }
+
+.terceiro{
+    width: 30%;
+    height: 100%;
+    padding-left: 20px;
+}
+
+.quarto{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
 
