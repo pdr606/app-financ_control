@@ -2,18 +2,7 @@ import React from 'react';
 import Radio from './Radio';
 import Input from './Input';
 
-
-/* Próximos passos
-
-- Somar os valores e mostrar no saldo ( de todos os itens da minha array)
-- Definir uma constante com o valor de entrada
-- Definir uma constante com os valores de saida
-
-- Finalizar com o botao que deleta o item, e refaz o calculamento dos itens acima
-*/
-
 function App() {
-
 
   let parsedItem;
   const [valueRadio, setValueRadio] = React.useState('Entrada')
@@ -23,7 +12,7 @@ function App() {
   const [historico, setHistorico] = React.useState([])
   const [saldo, setSaldo] = React.useState('')
   const [saida, setSaida] = React.useState('')
-  let totalEntradas; 
+  const [entrada, setEntrada] = React.useState('')
 
   React.useEffect(() =>{
     if(localStorage.length > 0){
@@ -35,23 +24,21 @@ function App() {
 
 
  React.useEffect(() =>{
-  if(historico){
-    console.log('banan')
-    setSaldo(historico.filter(item => Number(item.valor)).reduce((a, item) => a + parseFloat(item.valor), 0 ))
-    console.log(saldo)
-  }
- },[historico, saldo])
+    setEntrada(historico.filter(item => item.tipo === 'Entrada').reduce((a, item) => a + parseFloat(+item.valor), 0 ))
+    setSaida(historico.filter(item => item.tipo === 'Saída').reduce((a, item) => a + parseFloat(+item.valor), 0 ))
+    setSaldo(entrada - saida)
+ },[historico, entrada, saida])
 
 
   function handleSubmit(event){
     event.preventDefault()
     const novoObjeto = {
+      id : Math.floor(Math.random() * 500),
       descricao,
       valor,
-      tipo : valueRadio
+      tipo : valueRadio,
     }
 
-    console.log(novoObjeto.descricao)
 
 
     setHistorico([...historico, novoObjeto])
@@ -77,9 +64,11 @@ function App() {
     
   }
 
-  function excluirEvento(event){
-    event.preventDefault()
-    console.log(event.target)
+  function excluirEvento(objeto){
+    const novoHistorico = (historico.filter((item) => item !== objeto))
+    setHistorico(novoHistorico)
+    localStorage.setItem('historico', JSON.stringify(novoHistorico))
+  
   }
 
 
@@ -90,18 +79,18 @@ function App() {
       <div>
 
       <div>
-        <p>Entradas {totalEntradas} </p>
+        <p>Entradas {entrada} </p>
       </div>
       <div>
-        <p>Saídas</p>
+        <p>Saídas {saida}</p>
       </div>
       <div>
         <p>Saldo {saldo}</p>
       </div>
       </div>
       <form onSubmit={handleSubmit}>
-        <Input type='text' id='descricao' value={descricao} setValue={setDescricao} onBlur={handleBlur}  label="Descrição"/>
-        <Input type='number' id='valor' value={valor} setValue={setValor} onBlur={handleBlur} label="Valor"/>
+        <Input type='text' id='descricao' value={descricao} setValue={setDescricao} onBlur={handleBlur}  label="Descrição" required/>
+        <Input type='number' id='valor' value={valor} setValue={setValor} onBlur={handleBlur} label="Valor" required/>
 
 
         <Radio options={['Entrada', 'Saída']} value={valueRadio} setValue={setValueRadio} />
@@ -109,12 +98,12 @@ function App() {
     <button>Adicionar</button>
       </form>
       <div>
-        {historico.map (r =>(
-          <div key={r.valor}>
-            {r.descricao}
-            {r.valor}
-            {r.tipo}
-            <button descricao={r.descricao} onClick={excluirEvento}>Excluir</button>
+        {historico.map (objeto =>(
+          <div key={objeto.descricao + Math.floor(Math.random() * 100000)}>
+            {objeto.descricao}
+            {objeto.valor}
+            {objeto.tipo}
+            <button onClick={() => excluirEvento(objeto)}>Excluir</button>
           </div>
           
         ))}
