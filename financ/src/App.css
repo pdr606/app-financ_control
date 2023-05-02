@@ -139,3 +139,23 @@ form button{
 }
 
 
+@media only screen and (max-width: 768px) {
+    form{
+        background-color: white;
+        width: 70%;
+        margin: auto;
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        font-weight: 400;
+        height: 120px;
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        padding-left: 50px;
+        padding-right: 50px;
+        align-items: center;
+    }
+  }
+  
+
+
