@@ -5,7 +5,7 @@ const Input = ({type, setValue, id, label, value, onChange, onBlur, ...props}) =
   return (
     <div >
     <label className={styles.padding} htmlFor={id}>{label}</label>
-    <input  value={value} type={type} onBlur={onBlur} onChange={({target}) => setValue(target.value)} required></input>
+    <input  className={styles.font} value={value} type={type} onBlur={onBlur} onChange={({target}) => setValue(target.value)} required></input>
     </div>
   )
 }

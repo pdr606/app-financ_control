@@ -1,3 +1,11 @@
 .padding{
     padding-right: 8px;
 }
+
+.font{
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding-left: 4px;
+    font-family: 'Roboto', sans-serif;
+}
