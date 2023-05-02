@@ -8,7 +8,6 @@ function App() {
   const [valueRadio, setValueRadio] = React.useState('Entrada')
   const [descricao, setDescricao] = React.useState('')
   const [valor, setValor] = React.useState('')
-  const [error, setError] = React.useState(null)
   const [historico, setHistorico] = React.useState([])
   const [saldo, setSaldo] = React.useState('')
   const [saida, setSaida] = React.useState('')
@@ -51,19 +50,6 @@ function App() {
   }
 
 
-  function validate(value){
-    if(value.length === 0){
-      setError(true)
-    } else{
-      setError(null)
-    }
-  }
-
-  function handleBlur({target}){
-    validate(target.value)
-    
-  }
-
   function excluirEvento(objeto){
     const novoHistorico = (historico.filter((item) => item !== objeto))
     setHistorico(novoHistorico)
@@ -89,8 +75,8 @@ function App() {
       </div>
       </div>
       <form onSubmit={handleSubmit}>
-        <Input type='text' id='descricao' value={descricao} setValue={setDescricao} onBlur={handleBlur}  label="Descrição" required/>
-        <Input type='number' id='valor' value={valor} setValue={setValor} onBlur={handleBlur} label="Valor" required/>
+        <Input type='text' id='descricao' value={descricao} setValue={setDescricao}   label="Descrição" required/>
+        <Input type='number' id='valor' value={valor} setValue={setValor}  label="Valor" required/>
 
 
         <Radio options={['Entrada', 'Saída']} value={valueRadio} setValue={setValueRadio} />
