@@ -6,7 +6,7 @@ const Radio = ({options, value, setValue, ...props}) => {
     <div>
     {options.map((option) =>(
         <label className={styles.padding} key={option}>
-            <input  type='radio' required  checked={value === option} value={option} onChange={({target}) => setValue(target.value)} />
+            <input className={styles.input}  type='radio' required  checked={value === option} value={option} onChange={({target}) => setValue(target.value)} />
             {option}
         </label>
     ))}

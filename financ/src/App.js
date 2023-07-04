@@ -2,6 +2,9 @@ import React from 'react';
 import Radio from './Radio';
 import Input from './Input';
 import './App.css';
+import {BsFillSaveFill} from 'react-icons/bs'
+import {MdOutlineAttachMoney} from 'react-icons/md'
+import {GiTakeMyMoney} from 'react-icons/gi'
 
 function App() {
 
@@ -69,7 +72,7 @@ function App() {
         <div className='Containerdiv'>
           <div className='Containertitulo'>
             <p>Entradas</p>
-            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 96 960 960" width="48"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
+            <MdOutlineAttachMoney className='iconUpMoney'/>
           </div>
           <div className='Containervalor'>
             <p>+ R$ {entrada}</p>
@@ -79,7 +82,7 @@ function App() {
         <div className='Containerdiv'>
           <div className='Containertitulo'>
             <p>Saídas</p>
-            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 96 960 960" width="48"><path d="M480 896 160 576l42-42 248 248V256h60v526l248-248 42 42-320 320Z"/></svg>
+            <MdOutlineAttachMoney className='iconDownMoney'/>
           </div>
           <div className='Containervalor'>
             <p>- R$ {saida}</p>
@@ -88,7 +91,8 @@ function App() {
 
         <div className='Containerdiv'>
           <div className='Containertitulo'>
-            <p>Saldo $</p>
+            <p>Saldo</p>
+            <GiTakeMyMoney className='iconSaldo'/>
           </div>
           <div className='Containervalor'>
             <p>R$ {saldo}</p>
@@ -102,7 +106,7 @@ function App() {
         <Input  type='number' id='valor' value={valor} setValue={setValor}  label="Valor" required/>
         <Radio  options={['Entrada', 'Saída']} value={valueRadio} setValue={setValueRadio} />
         
-    <button><svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 96 960 960" width="48"><path d="M450 856V606H200v-60h250V296h60v250h250v60H510v250h-60Z"/></svg></button>
+    <button>< BsFillSaveFill className='icon' /></button>
       </form>
 
       <div className='containerResultado'>

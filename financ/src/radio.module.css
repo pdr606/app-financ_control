@@ -1,3 +1,9 @@
 .padding{
     padding-right: 8px;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.input:checked{
+    background-color: red;
 }
