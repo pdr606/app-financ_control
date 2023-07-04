@@ -184,14 +184,43 @@ form button:ch{
         font-family: 'Roboto', sans-serif;
         text-align: center;
         font-weight: 400;
-        height: 120px;
+        height: 230px;
         font-size: 15px;
         display: flex;
         flex-direction: column;
-        padding-left: 50px;
-        padding-right: 50px;
+        padding-left: 0px;
+        padding-right: 0px;
         align-items: center;
+        justify-content: center;
     }
+
+    form input{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    form radio{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .divContainer{
+        width: 70%;
+        margin: auto;
+        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        position: relative;
+        top: -20px;
+        z-index: 999;
+    }
+
+    .containerResultado{
+        width: 100%;
+    }
+
   }
   
 

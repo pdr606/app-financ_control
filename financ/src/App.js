@@ -104,7 +104,7 @@ function App() {
       <form onSubmit={handleSubmit}>
         <Input  type='text' id='descricao' value={descricao} setValue={setDescricao}   label="Descrição" />
         <Input  type='number' id='valor' value={valor} setValue={setValor}  label="Valor" required/>
-        <Radio  options={['Entrada', 'Saída']} value={valueRadio} setValue={setValueRadio} />
+        <Radio className='.radio'  options={['Entrada', 'Saída']} value={valueRadio} setValue={setValueRadio} />
         
     <button>< BsFillSaveFill className='icon' /></button>
       </form>
